@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-import Login from './pages/login/Login';
+import Login from './pages/Login/Login';
 import LandingPage from './pages/landingPage/LandingPage';
 import MovieDetail from './pages/MovieDetail/MovieDetail';
 import AuthHOC from './HOC/AuthHOC';
