@@ -1,15 +1,30 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../Login/Login.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { login } from '../../api/auth';
-
+import { useNavigate } from 'react-router-dom';
 
 
 function Login(){
 
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+      const email = localStorage.getItem("email");
+      const name = localStorage.getItem("name");
+      const token = localStorage.getItem("token");
+  
+      if(email && name && token){
+        window.location.href="/";
+      }
+    },[])
+    
+
+
+
     const [userId,setUserId] = useState("");
     const [password,setPassword] = useState("");
+    const [errMsg,seterrMsg] = useState("");
     
     const onPasswordChange=(e)=>{
         setPassword(e.target.value);
@@ -19,9 +34,26 @@ function Login(){
         setUserId(e.target.value);
     }
 
-    const onLogin=(e)=>{
+    const onLogin=async (e)=>{
+        seterrMsg("");
         e.preventDefault();
-        login(userId,password);
+        try{
+          const response = await login({userId,password});
+          const {accessToken, name, email, userStatus, userTypes} = response.data;
+          localStorage.setItem("token", accessToken);
+          localStorage.setItem("name", name);
+          localStorage.setItem("email", email);
+          localStorage.setItem("userId", userId);
+          localStorage.setItem("userStatus", userStatus);
+          localStorage.setItem("userTypes", userTypes);
+          
+          navigate("/");
+          
+        }
+        catch(e){
+          seterrMsg("Invalid UserId or Password");
+        }
+        
     }
 
     return <div className='form bg-dark d-flex justify-content-center align-items-center vh-100 text-light'> 
@@ -44,6 +76,7 @@ function Login(){
     <Button className='btn-success' type="submit">
       Submit
     </Button>
+    <div className='text-danger '>{errMsg}</div>
   </Form>
   </div> 
 
