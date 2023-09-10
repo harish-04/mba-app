@@ -7,7 +7,8 @@ import AuthHOC from './HOC/AuthHOC';
 import MovieCreate from './pages/MovieCreation/MovieCreate';
 import PageNotFound from './Components/Common/PageNotFound/PageNotFound';
 import { createContext, useState } from 'react';
-// import DeleteMovie from './pages/DeleteMovie/DeleteMovie';y
+import CreateAccount from './pages/CreateAccount/CreateAccount';
+// import DeleteMovie from './pages/DeleteMovie/DeleteMovie';
 
 export const ThemeContext= createContext();
 
@@ -20,6 +21,7 @@ function App() {
   <Router>
       <Routes>
         <Route path='/login' element={<Login></Login>}/>
+        <Route path='/signup' element={<CreateAccount/>}/>
         <Route path='/' element={<AuthHOC id="landingPage"><LandingPage/></AuthHOC>}/>
         <Route path="/movies/:movieId" element={<AuthHOC id="getMovie"><MovieDetail/></AuthHOC>}/>
         <Route path="/movies/create" element={<AuthHOC id="createMovie"><MovieCreate/></AuthHOC>}/>

@@ -44,13 +44,13 @@ function Header() {
             <Nav.Link href="#pricing">Events</Nav.Link>
           </Nav>
         </Container>
-        <Button onClick={onToggleTheme} variant={isDark?"light":'dark'}>Theme</Button>
+        <Button onClick={onToggleTheme} className='mx-4' variant={isDark?"light":'dark'}>Theme</Button>
 
         {
           isAdmin && 
         <Button className='mx-4' onClick={onCreateMovie} variant={isDark?"light":'dark'}>CreateMovie</Button>
         }
-        <Button onClick={onLogout} variant={isDark?"light":'dark'}>Logout</Button>
+        <Button onClick={onLogout} className='mx-4' variant={isDark?"light":'dark'}>Logout</Button>
 
       </Navbar>
     </div>

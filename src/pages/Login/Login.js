@@ -34,6 +34,10 @@ function Login(){
         setUserId(e.target.value);
     }
 
+    const onCreateAccount=(e)=>{
+      navigate("/signup");
+    }
+
     const onLogin=async (e)=>{
         seterrMsg("");
         e.preventDefault();
@@ -70,14 +74,18 @@ function Login(){
       <Form.Label>Password</Form.Label>
       <Form.Control onChange={onPasswordChange} value={password} type="password" placeholder="Password" />
     </Form.Group>
-    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-      <Form.Check type="checkbox" label="Check me out" />
+    <Form.Group className="mb-3 d-flex flex-row justify-align-content-end" controlId="formBasicCheckbox">
+      <Form.Check type="checkbox mb-3" label="Check me out" /> 
+      <Button variant="link" className='mx-5 text text-decoration-none' onClick={onCreateAccount}>Sign Up</Button>
+      {/* <button className="text-primary mx-5 " variant="link">Sign Up</button> */}
+      {/* <div className='text-primary mx-5' onClick={onCreateAccount}>Create Account</div> */}
     </Form.Group>
     <Button className='btn-success' type="submit">
       Submit
     </Button>
     <div className='text-danger '>{errMsg}</div>
   </Form>
+
   </div> 
 
 }
