@@ -2,15 +2,19 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Header from '../../Components/Header/Header';
 import { useMovieCreate } from '../../Components/Hooks/useMovieCreateHook';
+import { ThemeContext } from '../../App';
+import { useContext } from 'react';
 
 function MovieCreate(){
+    const {theme} = useContext(ThemeContext);
+    const isDark = theme === "dark";
 
     const {movieDetails, setMovieDetails, onCreateMovie, error , message} = useMovieCreate();
 
-    return <div className='vh-100 bg-dark text-light justify-content-center align-items-center'>
+    return <div className={isDark?"bg-dark text-light vh-100%":"bg-light text-dark"}>
             <Header/>
             <h2 className='justify-content-center align-items-center d-flex m-3'>Add A Movie</h2>
-    <div className='bg-dark text-light d-flex justify-content-center align-items-center '>
+    <div className={isDark?"bg-dark text-light vh-100% d-flex justify-content-center align-items-center":"bg-light text-dark d-flex justify-content-center align-items-center"}>
         
     <Form onSubmit={onCreateMovie}>
       <Form.Group className="mb-3">

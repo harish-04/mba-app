@@ -42,6 +42,7 @@ function Header() {
             <Nav.Link href="#home">Movies</Nav.Link>
             <Nav.Link href="#features">Shows</Nav.Link>
             <Nav.Link href="#pricing">Events</Nav.Link>
+
           </Nav>
         </Container>
         <Button onClick={onToggleTheme} className='mx-4' variant={isDark?"light":'dark'}>Theme</Button>
