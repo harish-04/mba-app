@@ -39,7 +39,7 @@ function Header() {
         <Container>
           <Navbar.Brand href="#home">Book My Show</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="../.././landingPage/LandingPage">Movies</Nav.Link>
+            <Nav.Link href="#home">Movies</Nav.Link>
             <Nav.Link href="#features">Shows</Nav.Link>
             <Nav.Link href="#pricing">Events</Nav.Link>
 
