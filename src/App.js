@@ -20,6 +20,7 @@ function App() {
     <ThemeContext.Provider value={{theme,changeTheme}}>
   <Router>
       <Routes>
+        <Route path='/' element={<LandingPage></LandingPage>}></Route>
         <Route path='/login' element={<Login></Login>}/>
         <Route path='/signup' element={<CreateAccount/>}/>
         <Route path='/' element={<AuthHOC id="landingPage"><LandingPage/></AuthHOC>}/>
